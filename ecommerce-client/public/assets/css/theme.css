@@ -1,0 +1,11 @@
+:root {
+    --color-yellow: #FFD700;
+    --color-black: #000000;
+    --color-white: #ffffff;
+  
+    --font-main: 'Inter', sans-serif;
+  
+    /* Boyut örnekleri */
+    --icon-size: 1.4rem;
+  }
+  

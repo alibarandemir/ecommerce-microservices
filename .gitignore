@@ -1,0 +1,34 @@
+# Root düzeyinde
+node_modules/
+dist/
+.env
+.env.*
+
+
+# Nuxt 3 - ecommerce-client
+ecommerce-client/.nuxt
+ecommerce-client/node_modules
+ecommerce-client/.output
+ecommerce-client/.env
+ecommerce-client/.env.local
+ecommerce-client/.env.*.local
+ecommerce-client/.vercel
+
+# VSCode ayarları
+.vscode/
+
+# IDE & OS dosyaları
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+
+# .NET - ecommerce-microservices
+ecommerce-microservices/**/bin/
+ecommerce-microservices/**/obj/
+ecommerce-microservices/**/appsettings.Development.json
+ecommerce-microservices/**/appsettings.json
+ecommerce-microservices/**/appsettings.*.json
+ecommerce-microservices/**/.vs/
