@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductApi.Data;
+using ProductApi.Enums;
 using ProductApi.Models;
 
 namespace ProductApi.Services
@@ -22,27 +23,18 @@ namespace ProductApi.Services
         {
             return await _context.Products.FindAsync(id);
         }
+        public async Task<List<Product>> GetByCategoryAsync(int categoryId)
+        {
+            return await _context.Products
+                .Where(p => (int)p.Category == categoryId)
+                .ToListAsync();
+        }
 
         public async Task<Product> AddAsync(Product product)
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return product;
-        }
-
-        public async Task<bool> UpdateAsync(Product product)
-        {
-            var existing = await _context.Products.FindAsync(product.Id);
-            if (existing == null) return false;
-
-            existing.Name = product.Name;
-            existing.Price = product.Price;
-            existing.Rating = product.Rating;
-            existing.Category = product.Category;
-            existing.ImageUrl = product.ImageUrl;
-
-            await _context.SaveChangesAsync();
-            return true;
         }
 
         public async Task<bool> DeleteAsync(int id)

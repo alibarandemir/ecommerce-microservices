@@ -91,6 +91,24 @@ namespace ProductApi.Controllers
 
             return Ok(ResponseDto<List<ProductDto>>.SuccessResponse(productDtos));
         }
+        [HttpGet("category/{categoryId}")]
+        public async Task<IActionResult> GetByCategory(int categoryId)
+        {
+            var products = await _productService.GetByCategoryAsync(categoryId);
+
+            var productDtos = products.Select(product => new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Rating = product.Rating,
+                Category = product.Category.ToString(),
+                ImageUrl = product.ImageUrl
+            }).ToList();
+
+            return Ok(ResponseDto<List<ProductDto>>.SuccessResponse(productDtos));
+        }
+
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]

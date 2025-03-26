@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('product', {
   state: () => ({
-    products: []
+    products: [],
+    filteredProducts: []
   }),
 
   actions: {
@@ -11,10 +12,20 @@ export const useProductStore = defineStore('product', {
       try {
         const res = await fetch('https://localhost:5000/products')
         const data = await res.json()
-        console.log(data)
         this.products = data.data
+        this.filteredProducts = data.data
       } catch (err) {
         console.error('Ürünler getirilirken hata oluştu:', err)
+      }
+    },
+
+    async fetchProductsByCategory(categoryId) {
+      try {
+        const res = await fetch(`https://localhost:5000/products/category/${categoryId}`)
+        const data = await res.json()
+        this.filteredProducts = data.data
+      } catch (err) {
+        console.error('Kategoriye göre ürün getirilirken hata oluştu:', err)
       }
     },
 
@@ -34,7 +45,7 @@ export const useProductStore = defineStore('product', {
           const errorData = await res.json()
           throw new Error(errorData.message || 'Ürün eklenemedi')
         }
-        const response=await res.json();
+        const response = await res.json();
         const newProduct = response.data
         this.products.push(newProduct)
       } catch (err) {
@@ -60,15 +71,17 @@ export const useProductStore = defineStore('product', {
         useNuxtApp().$toast.success('Silme başarılı');
 
         this.products = this.products.filter(p => p.id !== id)
+        this.filteredProducts = this.filteredProducts.filter(p => p.id !== id)
       } catch (err) {
         useNuxtApp().$toast.error('Silme başarısız: ' + err.message);
         console.error('Ürün silinirken hata:', err)
       }
     },
+
     getProductById(id) {
       return this.products.find(p => p.id === id)
     },
-    
+
     async fetchProductById(id) {
       try {
         const res = await fetch(`https://localhost:5000/products/${id}`)
@@ -82,6 +95,7 @@ export const useProductStore = defineStore('product', {
   },
 
   getters: {
-    allProducts: (state) => state.products
+    allProducts: (state) => state.products,
+    categoryProducts: (state) => state.filteredProducts
   }
 })
