@@ -11,4 +11,12 @@
 <script setup>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
+import { useCartStore } from '@/stores/cart'
+import { onMounted } from 'vue'
+
+const cartStore = useCartStore()
+
+onMounted(() => {
+  cartStore.loadCartFromStorage()
+})
 </script>

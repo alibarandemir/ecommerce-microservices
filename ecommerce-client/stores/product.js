@@ -64,6 +64,20 @@ export const useProductStore = defineStore('product', {
         useNuxtApp().$toast.error('Silme başarısız: ' + err.message);
         console.error('Ürün silinirken hata:', err)
       }
+    },
+    getProductById(id) {
+      return this.products.find(p => p.id === id)
+    },
+    
+    async fetchProductById(id) {
+      try {
+        const res = await fetch(`https://localhost:5000/products/${id}`)
+        const data = await res.json()
+        return data.data // detay sayfasında kullanılacak
+      } catch (err) {
+        console.error('Ürün detayı getirilirken hata oluştu:', err)
+        throw err
+      }
     }
   },
 
