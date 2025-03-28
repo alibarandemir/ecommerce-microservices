@@ -62,8 +62,6 @@
   h2 {
     color: var(--color-black);
   }
-  
-  /* strong sarı renk */
   :deep(strong) {
     color: var(--color-yellow);
   }

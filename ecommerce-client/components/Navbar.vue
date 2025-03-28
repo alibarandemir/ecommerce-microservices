@@ -1,9 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg shadow-sm bg-white position-relative">
+    
     <div class="container-fluid">
       <a class="navbar-brand text-black fw-bold" href="/">E-Commerce</a>
-
-      <!-- Hamburger -->
       <button
         class="navbar-toggler border-0"
         type="button"
@@ -12,8 +11,6 @@
       >
         <span class="navbar-toggler-icon custom-toggler-icon"></span>
       </button>
-
-      <!-- Menü (çökebilir) -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link nav-link-custom" href="/">Ana Sayfa</a></li>
@@ -22,8 +19,6 @@
           <li class="nav-item"><a class="nav-link nav-link-custom" href="/about">Hakkımda</a></li>
         </ul>
       </div>
-
-      <!-- Sepet İkonu (her zaman sağda) -->
       <div class="cart-button-container ms-3">
         <Cart />
       </div>
@@ -35,6 +30,7 @@
 import { useCartStore } from '@/stores/cart'
 import { ref } from 'vue'
 import Cart from './Cart.vue'
+import ChatBubble from './ChatBubble.vue'
 
 const cartStore = useCartStore()
 const showCart = ref(false)

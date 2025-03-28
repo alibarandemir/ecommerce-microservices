@@ -1,6 +1,5 @@
-// stores/admin.js
+// admin store yapısı
 import { defineStore } from 'pinia'
-
 export const useAdminStore = defineStore('admin', {
   state: () => ({
     token: null,
@@ -10,15 +9,12 @@ export const useAdminStore = defineStore('admin', {
     async login(username, password) {
       try {
         console.log(username)
-        const response = await fetch('https://localhost:5000/auth/login', {
+        const response = await fetch('http://localhost:5000/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ UserName: username, Password: password })
         })
-
         const data = await response.json()
-        console.log(data)
-
         if (!response.ok) {
           throw new Error(data.message || 'Giriş başarısız')
         }

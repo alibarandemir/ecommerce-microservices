@@ -17,7 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ProductDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSql")));
 
-// Servis katmaný
+// Servisler DI
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<ImageService>();
 builder.Services.AddEndpointsApiExplorer();
@@ -43,12 +43,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
-
-
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-
 app.UseHttpsRedirection();
 app.MapControllers();
 

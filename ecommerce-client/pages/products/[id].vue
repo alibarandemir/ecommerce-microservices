@@ -38,7 +38,7 @@
   const cartStore = useCartStore()
   
   const product = ref(null)
-  const quantity = ref(1) // 👈 kullanıcı miktar belirleyebilsin
+  const quantity = ref(1)
   
   onMounted(async () => {
     product.value = await productStore.fetchProductById(route.params.id)

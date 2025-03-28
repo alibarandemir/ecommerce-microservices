@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Identity.Services
 {
+    //gpt ile yazılan token burada entity ile imzalanıyor jwt
     public class TokenService
     {
         private readonly IConfiguration _config;

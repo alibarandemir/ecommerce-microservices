@@ -1,4 +1,4 @@
-// stores/product.js
+// ürün store yapısı
 import { defineStore } from 'pinia'
 
 export const useProductStore = defineStore('product', {
@@ -8,9 +8,10 @@ export const useProductStore = defineStore('product', {
   }),
 
   actions: {
+    //tüm ürünleri çekme actionı
     async fetchProducts() {
       try {
-        const res = await fetch('https://localhost:5000/products')
+        const res = await fetch('http://localhost:5000/products')
         const data = await res.json()
         this.products = data.data
         this.filteredProducts = data.data
@@ -18,22 +19,22 @@ export const useProductStore = defineStore('product', {
         console.error('Ürünler getirilirken hata oluştu:', err)
       }
     },
-
+    //Kategoriye göre ürün çekme actionı
     async fetchProductsByCategory(categoryId) {
       try {
-        const res = await fetch(`https://localhost:5000/products/category/${categoryId}`)
+        const res = await fetch(`http://localhost:5000/products/category/${categoryId}`)
         const data = await res.json()
         this.filteredProducts = data.data
       } catch (err) {
         console.error('Kategoriye göre ürün getirilirken hata oluştu:', err)
       }
     },
-
+    //ürün ekleme actionı
     async addProduct(formData) {
       try {
         const token = localStorage.getItem('token')
 
-        const res = await fetch('https://localhost:5000/products', {
+        const res = await fetch('http://localhost:5000/products', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`
@@ -52,12 +53,12 @@ export const useProductStore = defineStore('product', {
         console.error('Ürün eklenirken hata:', err)
       }
     },
-
+    //ürün silme actionı
     async deleteProduct(id) {
       try {
         const token = localStorage.getItem('token')
 
-        const res = await fetch(`https://localhost:5000/products/${id}`, {
+        const res = await fetch(`http://localhost:5000/products/${id}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${token}`
@@ -68,8 +69,8 @@ export const useProductStore = defineStore('product', {
           const errorData = await res.json()
           throw new Error(errorData.message || 'Silme işlemi başarısız')
         }
+        //toast mesajını kullanma(pluginsden)
         useNuxtApp().$toast.success('Silme başarılı');
-
         this.products = this.products.filter(p => p.id !== id)
         this.filteredProducts = this.filteredProducts.filter(p => p.id !== id)
       } catch (err) {
@@ -84,7 +85,7 @@ export const useProductStore = defineStore('product', {
 
     async fetchProductById(id) {
       try {
-        const res = await fetch(`https://localhost:5000/products/${id}`)
+        const res = await fetch(`http://localhost:5000/products/${id}`)
         const data = await res.json()
         return data.data // detay sayfasında kullanılacak
       } catch (err) {
@@ -94,6 +95,7 @@ export const useProductStore = defineStore('product', {
     }
   },
 
+  //state döndürme
   getters: {
     allProducts: (state) => state.products,
     categoryProducts: (state) => state.filteredProducts

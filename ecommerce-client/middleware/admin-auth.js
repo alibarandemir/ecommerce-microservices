@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  // Yalnızca client tarafında çalışmalı
+  // protected route sağlar
   if (import.meta.client) {
     const token = localStorage.getItem('token')
 

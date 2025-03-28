@@ -1,4 +1,4 @@
-<!-- layouts/admin.vue -->
+
 <template>
     <div class="admin-layout">
       <slot />
@@ -8,7 +8,7 @@
   <style scoped>
   .admin-layout {
     min-height: 100vh;
-    background-color: #f8f9fa; /* İsteğe bağlı arka plan */
+    background-color: #f8f9fa; 
     padding: 2rem 1rem;
   }
   </style>

@@ -13,10 +13,10 @@ namespace ProductApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            //enum yerine string tutulması
             modelBuilder.Entity<Product>()
                 .Property(p => p.Category)
-                .HasConversion<string>(); // Enum'ı string olarak sakla
+                .HasConversion<string>(); 
         }
     }
 }

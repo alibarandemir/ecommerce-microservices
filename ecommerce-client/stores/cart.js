@@ -6,6 +6,7 @@ export const useCartStore = defineStore('cart', {
   }),
 
   actions: {
+    //sepete ekleme eğer o ürün daha önce varsa miktari artıyor yoksa sepete ekleniyor
     addToCart(product, quantity = 1) {
       const existing = this.cart.find(p => p.id === product.id)
       if (existing) {
@@ -25,7 +26,7 @@ export const useCartStore = defineStore('cart', {
       this.cart = []
       this.saveCartToStorage()
     },
-
+    //sepet local storageda tutuluyor
     saveCartToStorage() {
       localStorage.setItem('cart', JSON.stringify(this.cart))
     },

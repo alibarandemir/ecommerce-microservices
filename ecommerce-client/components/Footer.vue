@@ -7,10 +7,9 @@
   </template>
   
   <script setup>
-    // Footer için herhangi bir script gerekmez, sadece statik içerik
   </script>
   
   <style scoped>
-    /* Footer'a özel stil eklemeleri yapabilirsin */
+    
   </style>
   

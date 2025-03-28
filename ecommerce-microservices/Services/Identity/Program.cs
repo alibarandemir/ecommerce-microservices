@@ -9,7 +9,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-
+        //admin memory dbde tutulabilir
         builder.Services.AddDbContext<AppIdentityDbContext>(options =>
             options.UseInMemoryDatabase("IdentityDb"));
 
@@ -20,17 +20,11 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddAuthentication();
         builder.Services.AddAuthorization();
-        //DI
         builder.Services.AddScoped<TokenService>();
-
         var app = builder.Build();
-        //  Admin kullanýcýyý oluþtur
-       
-
         app.UseAuthentication();
         app.UseAuthorization();
-        app.MapControllers(); // BUNU DA EKLE
-
+        app.MapControllers(); 
         app.Run();
 
     }

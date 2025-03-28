@@ -11,7 +11,7 @@ namespace ProductApi.Services
         {
             _cloudinary = cloudinary;
         }
-
+        //fotoğrafı cloudinaryde depolama
         public async Task<string?> UploadImageAsync(IFormFile file)
         {
             if (file.Length <= 0) return null;

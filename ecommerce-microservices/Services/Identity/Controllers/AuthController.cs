@@ -27,7 +27,7 @@ namespace Identity.Controllers
         {
             if (string.IsNullOrWhiteSpace(loginDto.UserName) || string.IsNullOrWhiteSpace(loginDto.Password))
                 return BadRequest(ResponseDto<string>.Fail("Kullanıcı adı ve şifre boş olamaz."));
-
+            //hardcoded giriş sağlanıyor
             var adminUsername = "admin";
             var adminPassword = "admin123";
 
@@ -43,7 +43,7 @@ namespace Identity.Controllers
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
+            //token üretimi
             var token = new JwtSecurityToken(
                 issuer: _config["Jwt:Issuer"],
                 audience: _config["Jwt:Audience"],

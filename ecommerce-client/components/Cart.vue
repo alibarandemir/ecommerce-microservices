@@ -1,5 +1,4 @@
 
-<!-- components/CartDropdown.vue -->
 <template>
   <div class="position-relative">
     <button class="nav-link nav-link-custom d-flex align-items-center position-relative" @click="toggleCart">

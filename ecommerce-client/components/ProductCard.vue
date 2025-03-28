@@ -1,6 +1,5 @@
 <template>
   <div class="card h-100 shadow-sm border-0">
-    <!-- Görsel kapsayıcı -->
     <div class="image-wrapper">
       <img
         :src="product.imageUrl"
@@ -8,7 +7,6 @@
         class="card-img-top product-image"
       />
     </div>
-
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">{{ product.name }}</h5>
       <p class="card-text text-muted mb-1">

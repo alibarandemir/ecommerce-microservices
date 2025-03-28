@@ -1,11 +1,9 @@
+/*Temanın özelleştirilmesi*/
 :root {
     --color-yellow: #FFD700;
     --color-black: #000000;
     --color-white: #ffffff;
-  
     --font-main: 'Inter', sans-serif;
-  
-    
     --icon-size: 1.4rem;
   }
   

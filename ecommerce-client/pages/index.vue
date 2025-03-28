@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Hero -->
+    <!-- Hero Alanı -->
     <section class="hero bg-light p-5 text-center rounded shadow mb-5">
       <h1 class="display-5 fw-bold hero-title">
         En Yeni <span class="highlight">Ürünler</span>, En Uygun
@@ -14,7 +14,7 @@
       >
     </section>
 
-    <!-- Popüler Kategoriler (component olarak ayırabiliriz) -->
+    <!-- Popüler Kategoriler (Şimdilik tüm ürünler çekiliyor) -->
     <section class="popular-categories mb-5">
       <div class="container">
         <h2 class="mb-4">Popüler Kategoriler</h2>
@@ -66,7 +66,7 @@ import { computed, onMounted } from "vue";
 
 const productStore = useProductStore();
 const products = computed(() => productStore.allProducts);
-
+//sayfa render edildiğinde çağrılan action
 onMounted(() => {
   if (productStore.allProducts.length === 0) {
     productStore.fetchProducts();

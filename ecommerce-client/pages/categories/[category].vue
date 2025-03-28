@@ -1,4 +1,4 @@
-<!-- pages/categories/[category].vue -->
+
 <template>
     <div class="container py-5">
       <h2 class="mb-4">{{ route.params.category }} Kategorisindeki Ürünler</h2>
@@ -22,7 +22,7 @@
   
   const route = useRoute()
   const productStore = useProductStore()
-  
+  //kategoriye göre ürün detay getirme urlden param değeri alınıyor
   onMounted(() => {
     const selected = categories.find(cat => cat.label === route.params.category)
     if (selected) {
